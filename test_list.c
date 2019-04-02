@@ -426,6 +426,26 @@ void test_clear()
     _test_list(&list, data, 0);
 }
 
+void test_reverse()
+{
+    List list = DEFAULT_LIST;
+    list.add(&list, 8);
+    list.add(&list, 6);
+    list.add(&list, 7);
+    list.add(&list, 5);
+    list.add(&list, 3);
+    list.add(&list, 0);
+    list.add(&list, 9);
+
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    _test_list(&list, data, 7);
+
+    list.reverse(&list);
+
+    int reverse_data[] = {9, 0, 3, 5, 7, 6, 8};
+    _test_list(&list, reverse_data, 7);
+}
+
 int main()
 {
     test_add();
