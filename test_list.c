@@ -402,7 +402,10 @@ void test_extend()
     b.add(&b, 0);
     b.add(&b, 9);
 
-    a.extend(b);
+    a.extend(&a, &b);
+
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    _test_list(&a, data, 7);
 }
 
 int main()

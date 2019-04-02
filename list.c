@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #include "list.h"
-const List DEFAULT_LIST = {NULL, NULL, 0, &add, &get, &index_of, &update, &delete, &insert};
+const List DEFAULT_LIST = {NULL, NULL, 0, &add, &get, &index_of, &update, &delete, &insert, &extend};
 const int ITEM_NOT_FOUND = -1;
 
 void add(List* list, int data)
@@ -159,6 +159,17 @@ void print_list(List* list)
         }
 
         printf("%d", node->data);
+        node = node->next;
+    }
+}
+
+void extend(List* a, List* b)
+{
+    Node* node = b->head;
+
+    while(node)
+    {
+        a->add(a, node->data);
         node = node->next;
     }
 }

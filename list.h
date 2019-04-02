@@ -18,6 +18,7 @@ typedef struct List
     void (*update)(struct List* list, int index, int data);
     void (*delete)(struct List* list, int index);
     void (*insert)(struct List* list, int index, int data);
+    void (*extend)(struct List* a, struct List* b);
 } List;
 
 //Create
@@ -34,6 +35,8 @@ void update(List* list, int index, int data);
 //Delete
 void delete(List* list, int index);
 
+//Other
+void extend(List* a, List* b);
 void print_list(List* list);
 
 extern const List DEFAULT_LIST;
