@@ -408,6 +408,24 @@ void test_extend()
     _test_list(&a, data, 7);
 }
 
+void test_clear()
+{
+    List list = DEFAULT_LIST;
+    list.add(&list, 8);
+    list.add(&list, 6);
+    list.add(&list, 7);
+    list.add(&list, 5);
+    list.add(&list, 3);
+    list.add(&list, 0);
+    list.add(&list, 9);
+
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    _test_list(&list, data, 7);
+
+    list.clear(&list);
+    _test_list(&list, data, 0);
+}
+
 int main()
 {
     test_add();
@@ -421,5 +439,6 @@ int main()
     test_delete_v2();
     test_delete_v3();
     test_extend();
+    test_clear();
     test_print_list();
 }
