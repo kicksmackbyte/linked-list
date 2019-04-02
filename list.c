@@ -142,6 +142,7 @@ void delete(List* list, int index)
         prev->next = node->next;
     }
 
+    --(list->size);
     free(node);
 }
 
