@@ -28,21 +28,40 @@ void add(List* list, int data)
 
 void insert(List* list, int index, int data)
 {
-    Node* newNode = malloc(sizeof(Node));
-    newNode->data = data;
-
-    Node* node = list->head;
-    Node* prev = node;
-
-    while(index && node)
+    // Add at back
+    if(index == list->size)
     {
-        --index;
-        prev = node;
-        node = node->next;
+        add(list, data);
     }
+    else
+    {
+        Node* newNode = malloc(sizeof(Node));
+        newNode->data = data;
 
-    prev->next = newNode;
-    newNode->next = node;
+        // Add at front
+        if(index == 0)
+        {
+            newNode->next = list->head;
+            list->head = newNode;
+        }
+        // Add in middle
+        else
+        {
+            Node* node = list->head;
+            Node* prev = node;
+
+            while(index-- && node)
+            {
+                prev = node;
+                node = node->next;
+            }
+
+            prev->next = newNode;
+            newNode->next = node;
+        }
+
+        ++(list->size);
+    }
 }
 
 int get(List* list, int index)
