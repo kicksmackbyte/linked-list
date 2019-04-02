@@ -17,6 +17,7 @@ typedef struct List
     int (*index_of)(struct List* list, int data);
     void (*update)(struct List* list, int index, int data);
     void (*delete)(struct List* list, int index);
+    void (*clear)(struct List* list);
     void (*insert)(struct List* list, int index, int data);
     void (*extend)(struct List* a, struct List* b);
 } List;
@@ -33,6 +34,7 @@ int index_of(List* list, int data);
 void update(List* list, int index, int data);
 
 //Delete
+void clear(List* list);
 void delete(List* list, int index);
 
 //Other
