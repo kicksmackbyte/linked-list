@@ -73,6 +73,103 @@ void test_add()
 
 void test_insert()
 {
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    List list = DEFAULT_LIST;
+
+    _test_list(&list, data, 0);
+
+    list.insert(&list, 0, 8);
+    _test_list(&list, data, 1);
+
+    list.insert(&list, 1, 6);
+    _test_list(&list, data, 2);
+
+    list.insert(&list, 2, 7);
+    _test_list(&list, data, 3);
+
+    list.insert(&list, 3, 5);
+    _test_list(&list, data, 4);
+
+    list.insert(&list, 4, 3);
+    _test_list(&list, data, 5);
+
+    list.insert(&list, 5, 0);
+    _test_list(&list, data, 6);
+
+    list.insert(&list, 6, 9);
+    _test_list(&list, data, 7);
+}
+
+void test_insert_v2()
+{
+    int data_0[] = {};
+    List list = DEFAULT_LIST;
+
+    _test_list(&list, data_0, 0);
+
+    int data_1[] = {8};
+    list.insert(&list, 0, 8);
+    _test_list(&list, data_1, 1);
+
+    int data_2[] = {6, 8};
+    list.insert(&list, 0, 6);
+    _test_list(&list, data_2, 2);
+
+    int data_3[] = {7, 6, 8};
+    list.insert(&list, 0, 7);
+    _test_list(&list, data_3, 3);
+
+    int data_4[] = {5, 7, 6, 8};
+    list.insert(&list, 0, 5);
+    _test_list(&list, data_4, 4);
+
+    int data_5[] = {3, 5, 7, 6, 8};
+    list.insert(&list, 0, 3);
+    _test_list(&list, data_5, 5);
+
+    int data_6[] = {0, 3, 5, 7, 6, 8};
+    list.insert(&list, 0, 0);
+    _test_list(&list, data_6, 6);
+
+    int data_7[] = {9, 0, 3, 5, 7, 6, 8};
+    list.insert(&list, 0, 9);
+    _test_list(&list, data_7, 7);
+}
+
+void test_insert_v3()
+{
+    int data_0[] = {};
+    List list = DEFAULT_LIST;
+
+    _test_list(&list, data_0, 0);
+
+    int data_1[] = {8};
+    list.insert(&list, 0, 8);
+    _test_list(&list, data_1, 1);
+
+    int data_2[] = {6, 8};
+    list.insert(&list, 0, 6);
+    _test_list(&list, data_2, 2);
+
+    int data_3[] = {6, 7, 8};
+    list.insert(&list, 1, 7);
+    _test_list(&list, data_3, 3);
+
+    int data_4[] = {6, 7, 8, 5};
+    list.insert(&list, 4, 5);
+    _test_list(&list, data_4, 4);
+
+    int data_5[] = {6, 3, 7, 8, 5};
+    list.insert(&list, 1, 3);
+    _test_list(&list, data_5, 5);
+
+    int data_6[] = {6, 3, 7, 0, 8, 5};
+    list.insert(&list, 3, 0);
+    _test_list(&list, data_6, 6);
+
+    int data_7[] = {6, 9, 3, 7, 0, 8, 5};
+    list.insert(&list, 1, 9);
+    _test_list(&list, data_7, 7);
 }
 
 void test_get()
@@ -148,6 +245,22 @@ void test_index_of()
 
 void test_update()
 {
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    int reverse_data[] = {9, 0, 3, 5, 7, 6, 8};
+    List list = DEFAULT_LIST;
+
+    //list.update(&list, 0, 9); //make sure this crashes
+    list.add(&list, 8);
+    list.update(&list, 0, 9);
+    _test_list(&list, reverse_data, 1);
+
+    list.add(&list, 6);
+    list.update(&list, 1, 0);
+    _test_list(&list, reverse_data, 2);
+
+    list.add(&list, 7);
+    list.update(&list, 2, 3);
+    _test_list(&list, reverse_data, 3);
 }
 
 void test_delete()
@@ -162,6 +275,8 @@ int main()
 {
     test_add();
     test_insert();
+    test_insert_v2();
+    test_insert_v3();
     test_get();
     test_index_of();
     test_update();
