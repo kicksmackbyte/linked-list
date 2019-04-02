@@ -459,6 +459,7 @@ int main()
     test_delete_v2();
     test_delete_v3();
     test_extend();
+    test_reverse();
     test_clear();
     test_print_list();
 }

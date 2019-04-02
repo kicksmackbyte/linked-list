@@ -20,6 +20,7 @@ typedef struct List
     void (*clear)(struct List* list);
     void (*insert)(struct List* list, int index, int data);
     void (*extend)(struct List* a, struct List* b);
+    void (*reverse)(struct List* list);
 } List;
 
 //Create
@@ -39,6 +40,7 @@ void delete(List* list, int index);
 
 //Other
 void extend(List* a, List* b);
+void reverse(List* list);
 void print_list(List* list);
 
 extern const List DEFAULT_LIST;
