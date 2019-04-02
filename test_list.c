@@ -389,6 +389,22 @@ void test_print_list()
 {
 }
 
+void test_extend()
+{
+    List a = DEFAULT_LIST;
+    a.add(&a, 8);
+    a.add(&a, 6);
+    a.add(&a, 7);
+
+    List b = DEFAULT_LIST;
+    b.add(&b, 5);
+    b.add(&b, 3);
+    b.add(&b, 0);
+    b.add(&b, 9);
+
+    a.extend(b);
+}
+
 int main()
 {
     test_add();
@@ -401,5 +417,6 @@ int main()
     test_delete();
     test_delete_v2();
     test_delete_v3();
+    test_extend();
     test_print_list();
 }
