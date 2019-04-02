@@ -265,6 +265,124 @@ void test_update()
 
 void test_delete()
 {
+    List list = DEFAULT_LIST;
+
+    int data[] = {8, 6, 7, 5, 3, 0, 9};
+    list.add(&list, 8);
+    list.add(&list, 6);
+    list.add(&list, 7);
+    list.add(&list, 5);
+    list.add(&list, 3);
+    list.add(&list, 0);
+    list.add(&list, 9);
+    _test_list(&list, data, 7);
+
+    list.delete(&list, 6);
+    _test_list(&list, data, 6);
+
+    list.delete(&list, 5);
+    _test_list(&list, data, 5);
+
+    list.delete(&list, 4);
+    _test_list(&list, data, 4);
+
+    list.delete(&list, 3);
+    _test_list(&list, data, 3);
+
+    list.delete(&list, 2);
+    _test_list(&list, data, 2);
+
+    list.delete(&list, 1);
+    _test_list(&list, data, 1);
+
+    list.delete(&list, 0);
+    _test_list(&list, data, 0);
+}
+
+void test_delete_v2()
+{
+    List list = DEFAULT_LIST;
+
+    int data_1[] = {8, 6, 7, 5, 3, 0, 9};
+    list.add(&list, 8);
+    list.add(&list, 6);
+    list.add(&list, 7);
+    list.add(&list, 5);
+    list.add(&list, 3);
+    list.add(&list, 0);
+    list.add(&list, 9);
+    _test_list(&list, data_1, 7);
+
+    int data_2[] = {6, 7, 5, 3, 0, 9};
+    list.delete(&list, 0);
+    _test_list(&list, data_2, 6);
+
+    int data_3[] = {7, 5, 3, 0, 9};
+    list.delete(&list, 0);
+    _test_list(&list, data_3, 5);
+
+    int data_4[] = {5, 3, 0, 9};
+    list.delete(&list, 0);
+    _test_list(&list, data_4, 4);
+
+    int data_5[] = {3, 0, 9};
+    list.delete(&list, 0);
+    _test_list(&list, data_5, 3);
+
+    int data_6[] = {0, 9};
+    list.delete(&list, 0);
+    _test_list(&list, data_6, 2);
+
+    int data_7[] = {9};
+    list.delete(&list, 0);
+    _test_list(&list, data_7, 1);
+
+    int data_8[] = {};
+    list.delete(&list, 0);
+    _test_list(&list, data_8, 0);
+}
+
+void test_delete_v3()
+{
+    List list = DEFAULT_LIST;
+
+    int data_1[] = {8, 6, 7, 5, 3, 0, 9};
+    list.add(&list, 8);
+    list.add(&list, 6);
+    list.add(&list, 7);
+    list.add(&list, 5);
+    list.add(&list, 3);
+    list.add(&list, 0);
+    list.add(&list, 9);
+    _test_list(&list, data_1, 7);
+
+    int data_2[] = {8, 6, 7, 3, 0, 9};
+    list.delete(&list, 3);
+    _test_list(&list, data_2, 6);
+
+    int data_3[] = {8, 6, 7, 0, 9};
+    list.delete(&list, 3);
+    _test_list(&list, data_3, 5);
+
+    int data_4[] = {8, 7, 0, 9};
+    list.delete(&list, 1);
+    _test_list(&list, data_4, 4);
+
+    int data_5[] = {8, 7, 9};
+    list.delete(&list, 2);
+    _test_list(&list, data_5, 3);
+
+    int data_6[] = {8, 7};
+    list.delete(&list, 2);
+    _test_list(&list, data_6, 2);
+
+    int data_7[] = {7};
+    list.delete(&list, 0);
+    _test_list(&list, data_7, 1);
+
+    int data_8[] = {};
+    list.delete(&list, 0);
+    _test_list(&list, data_8, 0);
 }
 
 void test_print_list()
@@ -281,5 +399,7 @@ int main()
     test_index_of();
     test_update();
     test_delete();
+    test_delete_v2();
+    test_delete_v3();
     test_print_list();
 }
